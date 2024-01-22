@@ -1,0 +1,84 @@
+site_name: aki's blog
+plugins:
+  - search
+  - blog
+extra_css:
+  - stylesheets/extra.css
+
+theme:
+  name: material
+  language: zh
+  icon:
+    logo: material/bicycle-cargo
+    previous: fontawesome/solid/angle-left
+    next: fontawesome/solid/angle-right
+  font:
+    text: Noto Sans
+  palette:
+    - scheme: default
+      primary: teal
+      accent: light green
+      toggle:
+        icon: material/brightness-7
+        name: "light mode"
+    - scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: "黑暗模式"
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.indexes
+    - navigation.tracking
+    - navigation.path
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/AkiyamaZw/Neta2
+      name: by aki
+
+markdown_extensions:
+  - toc:
+      permalink: true
+      title: On this page
+  - footnotes
+  - tables
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - md_in_html
+
+
+nav:
+  # - Home: 'index.md'
+  - Blog:
+    - blog/index.md
+  - About: 'index.md'
+
+
+
+
+
