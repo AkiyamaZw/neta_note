@@ -3,7 +3,7 @@
 * export python env
 
 ```python
-pip freeze > requirements.txt
+pip list --format=freeze > requirements.txt
 ```
 
 * import python env
