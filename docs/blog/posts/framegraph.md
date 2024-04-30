@@ -40,7 +40,10 @@ PassNode_1-->ResourceNode-->PassNode_2
 
 * Execute阶段: 遍历所有经过Compile的节点，创建资源实例，执行Pass逻辑，回收不被需要的资源。
 
-&emsp;&emsp;面对各种各样的Pass需求和Resource类型需求，filament需要对PassNode和Resource进行“扩展”。”扩展“的方式通过根据数据和操作进行区分，数据通过C++模版类进行扩展，比如FrameGraphPass类的模版参数；操作通过C++callable对象进行扩展, 例如在PassNode的执行逻辑会PassBuilder的AddPass阶段，通过匿名函数对象保存到FrameGraphPass中，当Execute阶段时被Callback。
+&emsp;&emsp;面对各种各样的Pass需求和Resource类型需求，filament需要对PassNode和Resource进行“扩展”。”扩展“的方式根据数据和操作进行区分，数据通过C++模版类进行扩展，比如FrameGraphPass类的模版参数；操作通过C++callable对象进行扩展, 例如在PassNode的执行逻辑会PassBuilder的AddPass阶段，通过匿名函数对象保存到FrameGraphPass中，当Execute阶段时被Callback。
+
+## 数据结构
+todo
 
 ## 总结
 &emsp;&emsp;FrameGraph本身关注了渲染器本身存在的问题：渲染流程可维护性，GPU资源维护。通过将渲染流程抽象为图模型后，将渲染流程中耦合的逻辑，分解为图的节点和边，并根据图中的节点引用关系，定制运行时需要的数据。图模型优化复杂流水线状的逻辑流程有奇效(想起N年前的tensorflow1.x)。但作为一个非引擎非渲染程序猿，FrameGraph特性给我的感受，最直接的是清晰的逻辑关系和资源管理(因为之前自己实现有点🥬)。实际上，FrameGraph还有很多的特性在这篇笔记中没有提及，比如异步执行Pass逻辑、FrameGraph实际运行性能优势等。
