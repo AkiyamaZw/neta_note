@@ -2,7 +2,6 @@ site_name: aki's blog
 plugins:
   - search
   - blog
-  - social
 extra_css:
   - stylesheets/extra.css
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
