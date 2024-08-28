@@ -84,6 +84,9 @@ nav:
   - Home: 'index.md'
   - Blog:
     - blog/index.md
+  - 阅读:
+    - 'reading/booklist.md'
+    - 'reading/readwriting.md'
   - About: 'about.md'
 
 
