@@ -15,7 +15,7 @@ theme:
   name: material
   language: zh
   icon:
-    logo: material/bicycle-cargo
+    logo: material/usb-port
     previous: fontawesome/solid/angle-left
     next: fontawesome/solid/angle-right
   font:
