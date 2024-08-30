@@ -1,4 +1,4 @@
-site_name: aki's blog
+site_name: aki的博客
 plugins:
   - search
   - blog
@@ -77,13 +77,12 @@ markdown_extensions:
 
 
 nav:
-  - Home: 'index.md'
-  - Blog:
+  - 欢迎: 'index.md'
+  - 文章:
     - blog/index.md
   - 阅读:
     - 'reading/booklist.md'
-    - 'reading/readwriting.md'
-  - About: 'about.md'
+  - 关于: 'about.md'
 
 
 
