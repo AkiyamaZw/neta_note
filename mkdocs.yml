@@ -49,10 +49,6 @@ theme:
 
 extra:
   generator: false
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/AkiyamaZw/Neta2
-      name: by aki
 
 markdown_extensions:
   - toc:
