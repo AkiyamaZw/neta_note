@@ -12,6 +12,7 @@
 * [Effective C++](https://book.douban.com/subject/5387403/)
 * [More Effective C++](https://book.douban.com/subject/5908727/)
 * [Effevtive Modern C++](https://book.douban.com/subject/30178902/)
+* [程序员的自我修养--链接、装载与库](https://book.douban.com/subject/3652388/) [🏗️阅读中]
 
 #### Python
 * [Python基础教程](https://book.douban.com/subject/4866934/)
