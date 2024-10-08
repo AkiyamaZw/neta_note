@@ -5,7 +5,7 @@
 
 只记录看过的，希望列表能越变越长！💪
 
-## 学会“语言”
+## 语言类
 #### C/C++
 * [C++ Primer](https://book.douban.com/subject/25708312/)
 * [C++之旅](https://book.douban.com/subject/36596125/)
@@ -21,15 +21,16 @@
 #### lua
 * [lua程序设计](https://book.douban.com/subject/30262035/)
 
-## 不得不看的基础
+## 基础
 * [大话数据结构](https://book.douban.com/subject/6424904/)
-
 
 ## 学会“套路”
 * [大话设计模式](https://book.douban.com/subject/2334288/)
 * [游戏编程模式](https://book.douban.com/subject/26880704/)
 * [HeadFirst设计模式](https://book.douban.com/subject/2243615/)
+* [函数式设计](https://book.douban.com/subject/36974785) [🏗️阅读中]
 
 ## 学会应用
 * [Unity3D网络游戏实战](https://book.douban.com/subject/26914638/)
+
 
