@@ -14,8 +14,34 @@ tags: note
 ## 简介
 &emsp;&emsp; ECS是游戏开发中炙手可热的技术。近些年，商业引擎Unreal[^2]、Unity都提出了自己的ECS框架，O3DE号称是一个基于ECS的游戏引擎。看到如此神奇的编程方式，遂忍不住探索了一番。下文主要记录我在实现一个简单ECS过程中的思考。关于ECS的基本概念可以参考Entt作者的博客[^6], 当然也有知乎大佬的翻译版[^7]。
 
-## 概念、优点、实现路径。
-### 概念
+## 概念与实现要点
+
+*If there a one, there are more.*
+
+### 概念简述
+
+&emsp;&emsp;ECS是一种游戏编程模式，主要的思路是数据与行为分离，在此基础上，连续存放数据数据，提高缓存命中率[^8]，从而加速游戏程序执行效率。更多的概念从博客[^6]上可以了解更多。
+
+![虚幻引擎MASS演讲](img/ecs_cache.png)
+
+&emsp;&emsp;性能的优化是ECS的主打优点。首先是数据在内存上的排列，设计一种合适的组件内存排列格式来达到缓存命中率的目的，目前已经有用Archetype[^1][^2][^3]和稀疏表[^8]的实现案例。关于缓存命中率，上图非常直观展示OOP和DOP的区别。另一方面是行为的优化，所谓的"行为"即串行的逻辑，在游戏中即遍历GameObject的的行为操作，将串行的逻辑转变为并行的逻辑也是一个发展方向。
+
+&emsp;&emsp;代码可维护性也是ECS的优势。ECS将数据与行为分离，提供了状态与改变状态的建模。状态机模式能够让代码结构简单。在名为“ECS”的状态机模型中，components即状态，逻辑是将Components状态的Transform。这种将行为定义为数据(Component)的转换的思路契合面向数据编程(DOP)的概念[^5]，它提供了良好的可调试性和可维护性。
+
+&emsp;&emsp;ECS也存在一些问题，当然一部分来自于其本身的特性，一部分属于我自己的认知深度。比如ECS是一种机器友好的DOP编程模式，这意味着熟悉OOP的编程人员要学习拥抱变化（虽然一直在拥抱变化）。对我个人而言，游戏引擎中一大利器“消息模式”在ECS中如何实现是一个问题。
+
+&emsp;&emsp;从实现角度上来说，这篇短文只记录了关于ECS数据内存排布的实现方式，关于如何利用多线程去加速“行为”目前暂未涉足。
+
+### 要点
+&emsp;&emsp; 下表列出了我认为相关的知识点，当然仅限用于实现一个简易的ECS模块。
+
+|要点|子要点|
+|--|--|
+|裸内存|分配、回收、格式化读取、删除|
+|ECS|Chunk、ArcheType、Registry|
+|C++模版|函数模版，type_traits|
+
+
 &emsp;&emsp; 当我第一次去看MASS[^2]的代码时，我不理解Archetype这层抽象的意义。没错，就算表达为“Entity的类”，也没有解决我的问题，更重要的是它为什么存在。
 
 
@@ -71,6 +97,8 @@ end
 [^5]: https://www.bilibili.com/video/BV1xW411r7tz/?spm_id_from=333.337.search-card.all.click&vd_source=b7c2138ea8aa033f5b5f8039de77f0d4
 [^6]: https://skypjack.github.io/2019-02-14-ecs-baf-part-1/
 [^7]: https://zhuanlan.zhihu.com/p/684268890
-
+[^8]: https://github.com/skypjack/entt
+[^9]: https://gameprogrammingpatterns.com/data-locality.html
+[^10]: https://www.bilibili.com/video/BV13D4y1v7xx/?spm_id_from=333.337.search-card.all.click&vd_source=b7c2138ea8aa033f5b5f8039de77f0d4
 
 
