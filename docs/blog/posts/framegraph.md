@@ -5,13 +5,17 @@ categories:
 tags: note
 ---
 
+
 # FrameGraph简析
+自己写的D3D12Pipeline相当逻辑混乱，回想起工作时遇到过的FrameGraph。本文主要简单记录了filament的framegraph实现理解。
+
+<!-- more -->
 ## 简介
 &emsp;&emsp;前些日子正在写一个简单的d3d12的渲染程序，渲染Pipline出于简单考虑用Vector来组织Pass。开发到后面就会发现很多Pass之间是有依赖关系。这就意味着，如果想要增删Pass就会牵扯到依赖关系。拔出萝卜带出泥，一旦后续的Pass依赖被删除的Pass，可能就会产生意料之外的效果。那么，换种数据结构？
 
 &emsp;&emsp;最初关注到FrameGraph[^1]是在工作中一次无意翻阅代码时，再见它已经是Cocos在GDC上的演讲展示[^2]。FrameGraph旨在用依赖图的方式来组织渲Pipeline，资源与Pass是图中的节点，资源与Pass之间的依赖关系即图的有向边。通过将Pipeline用图的方式来表达，可以获得许多不错的特性，方便引擎渲染模块的开发与维护。下文介绍的FrameGraph基于Filament开源库[^3]代码，因为它足够简单，对初学者够友好。
 
-<!-- more -->
+
 
 ## 功能特性
 
