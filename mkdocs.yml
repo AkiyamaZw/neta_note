@@ -13,6 +13,7 @@ extra_javascript:
 
 theme:
   name: material
+  custom_dir: overrides
   language: zh
   icon:
     logo: material/usb-port
