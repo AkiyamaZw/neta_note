@@ -22,15 +22,21 @@ theme:
   font:
     text: Noto Sans
   palette:
-    - scheme: default
-      primary: teal
-      accent: light green
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/link
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
       toggle:
         icon: material/brightness-7
         name: "light mode"
-    - scheme: slate
-      primary: indigo
-      accent: blue
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: indigo
       toggle:
         icon: material/brightness-4
         name: "黑暗模式"
@@ -76,10 +82,9 @@ markdown_extensions:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - md_in_html
 
-
 nav:
-  - 欢迎: 'index.md'
-  - 文章:
+  - Home: 'index.md'
+  - 博客:
     - blog/index.md
   - 阅读:
     - 'reading/booklist.md'

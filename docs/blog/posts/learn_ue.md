@@ -1,12 +1,12 @@
 ---
-date: 2024-04-28
+date: 2024-11-30
 comments: true
 categories:
     - Unreal Engine
 tags: note
 ---
 
-# ue的学习之路
+# The Road To UE
 本文记录了学习UE的经历，走过一些弯路，总结出一条易于上手的过程，在此记录。
 <!-- more -->
 
@@ -27,7 +27,7 @@ tags: note
 
 ##### Game Features相关
 * [使用教程](https://unrealdirective.com/articles/modular-game-features-what-you-need-to-know)
-* [使用方法及其常见问题](https://www.bilibili.com/opus/666746385154965521)
+* [使用方法及其常见问题的解决办法](https://www.bilibili.com/opus/666746385154965521)
 
 
 
