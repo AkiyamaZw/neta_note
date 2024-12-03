@@ -6,8 +6,8 @@ categories:
 tags: note
 ---
 
-# 关于ue的学习之路
-&emsp;&emsp;本文记录了学习UE的经历，走过一些弯路，总结出一条易于上手的过程，在此记录。
+# ue的学习之路
+本文记录了学习UE的经历，走过一些弯路，总结出一条易于上手的过程，在此记录。
 <!-- more -->
 
 
@@ -25,11 +25,10 @@ tags: note
 ##### Lyra
 * [解析系列](https://unrealdirective.com/articles/modular-game-features-what-you-need-to-know)
 
-##### GameFeatures相关
+##### Game Features相关
 * [使用教程](https://unrealdirective.com/articles/modular-game-features-what-you-need-to-know)
 * [使用方法及其常见问题](https://www.bilibili.com/opus/666746385154965521)
 
-##### Gameplay框架
 
 
 
