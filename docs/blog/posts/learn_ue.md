@@ -19,6 +19,7 @@ tags: note
 
 ## 参考材料
 ##### 初识UE
+* [命名规则](https://dev.epicgames.com/documentation/zh-cn/unreal-engine/epic-cplusplus-coding-standard-for-unreal-engine)
 * [InsideUE Gameplay](https://zhuanlan.zhihu.com/p/22833151)
 * [上手项目](https://www.bilibili.com/video/BV1iEybYbE9p/?spm_id_from=333.1007.top_right_bar_window_default_collection.content.click&vd_source=b7c2138ea8aa033f5b5f8039de77f0d4)
 
