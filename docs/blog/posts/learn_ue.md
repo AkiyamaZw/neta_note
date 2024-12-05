@@ -26,10 +26,13 @@ tags: note
 ##### Lyra
 * [解析系列](https://unrealdirective.com/articles/modular-game-features-what-you-need-to-know)
 
+
 ##### Game Features相关
 * [使用教程](https://unrealdirective.com/articles/modular-game-features-what-you-need-to-know)
 * [使用方法及其常见问题的解决办法](https://www.bilibili.com/opus/666746385154965521)
 
+#### ModularGameplay相关
+* [IGameFrameworkInitStateInterface](https://www.bilibili.com/opus/786865299100008497)
 
 
 
