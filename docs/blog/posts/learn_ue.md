@@ -36,18 +36,22 @@ draft: true
 
 ## 回顾
 
-### 数据化哪些内容？为此Lyra做了什么？
-&emsp;&emsp;在游戏开发过程中，数据的"权力"通常把握在策划的手中。策划同学需要去调整数据，来实现一些玩法，调整游戏数值等等。学习Lyra的过程中，它又做了哪些这方面的事情，又有哪些出彩的地方呢？
+### Experience数据化哪些内容？为此Lyra做了什么？
+&emsp;&emsp;在游戏开发过程中，数据的"权力"通常把握在策划的手中。策划同学需要去调整数据，来实现一些玩法，调整游戏数值等等。Experience数据化了什么内容？
 
+&emsp;&emsp;Experience中包含了几个方面的数据。在输入方面，引用InputConfig数据。InputConfig中有一些输入行为和GameplayTag。在角色方面，它指定了Pawn的默认蓝图。最后一个就是指定需要加载的Gameplay Feature。
 
-### ModularGameplay为何引入
-&emsp;&emsp;UE5本身已经提供了Actor-ActorComponent来方便开发者做Gameplay开发，那为何还要再引入ModularGameplay插件呢？
-简单回答：弥补功能上的缺失。ModularGameplay提供了一些功能来方便开发者做自己的开发。目前我看到的一些优点在于：提供组件初始化优化，Actor与组件辅助函数。
+&emsp;&emsp;Experience持有数据，游戏中的逻辑就是对Experience数据的加载和对象逻辑初始化（颇有DOD面向数据编程的味道）。加载Experience发生在GameMode对象InitGame函数中，整个加载的过程配合GameState的ExperienceManagerComponent来实现。而对象逻辑初始化则基本上发生在Experience加载完成后的事件回调中OnExperienceLoad中。回调函数创建了Pawn,配置了Pawn的InputConfig。基本上是对应数据内容。
 
-&emsp;&emsp;组件间初始化问题通常出现在几个组件间有依赖关系的情况。这一点在Lyra的HeroCompopnent和LyraPawnExtensionComponent两个类上表现明显。
-ModularGameplay提供了IGameFrameworkInitStateInterfaces来增强组件在BeginPlay阶段的状态依赖关系。也就是通过一个发生在BeginPlay阶段的状态机模型，继承接口的组件会在同步修改状态，在状态切换的过程中，开发者可以去实现一些逻辑功能。
+|阶段|类名|作用|
+|---|---|---|
+|加载阶段|ExperienceManagerComponent|加载Assets,加载输入数据，加载Features|
+|加载完成|GameMode| 创建Pawn |
+|加载完成|ExperienceExtensionComponent|加载数据...|
+|加载完成|HeroComponent|设定输入...|
 
-&emsp;&emsp;Actor与组件辅助函数。
+&emsp;&emsp;注意在Experience加载完成之前也会创建Pawn，但是由于没有会发现没有Pawn类型（神奇的Lyra在WorldSetting中没有设定默认的Pawn类型），也没办法生成Pawn。也就是说具体的Pawn相关逻辑都延后到Experience加载完成后。
+
 
 
 
