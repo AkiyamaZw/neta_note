@@ -13,17 +13,34 @@ draft: true
 
 
 ```mermaid
-flowchart
-direction RL
-Experience -->PawnData
-Experience -->GameFeatureAction
-Experience -->ActonSet
+graph LR
+
+subgraph level1
+    Experience
+end
+
+subgraph level2
+    Experience -->PawnData
+    Experience -->GameFeatureAction
+    Experience -->ActonSet
+end
+
+subgraph level3
 PawnData-->AbilitySet
 PawnData-->AbilityTagRelationshipMapping
 PawnData-->InputConfig
+end
+
+subgraph level4
 AbilitySet-->AbilitySet_GameplayAbility
 AbilitySet-->AbilitySet_GameplayEffect
 AbilitySet-->AbilitySet_AttributeSet
+end
+
+style level1 fill:#000, stroke:#888,stroke-width:4px
+style level2 fill:#000, stroke:#888,stroke-width:4px
+style level3 fill:#000, stroke:#888,stroke-width:4px
+style level4 fill:#000, stroke:#888,stroke-width:4px
 
 ```
 
@@ -31,8 +48,12 @@ AbilitySet-->AbilitySet_AttributeSet
 ## 数据驱动
 |名称|类名| 功能|
 |---|---|---|
+|**level1**|
 |Experience|LyraExperienceDefinition|“体验”的数据载体|
+|**level2**|
 |PawnData|LyraPawnData|可控制体的配置，包括Pawn类型，技能，基础输入映射|
+|GameFeatureAction||||
+|ActionSet|||
 
 ### Experience数据化哪些内容？为此Lyra做了什么？
 &emsp;&emsp;在游戏开发过程中，数据的"权力"通常把握在策划的手中。策划同学需要去调整数据，来实现一些玩法，调整游戏数值等等。Experience数据化了什么内容？
