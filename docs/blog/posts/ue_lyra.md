@@ -63,11 +63,38 @@ style level4 fill:#000, stroke:#888,stroke-width:4px
 
 &emsp;&emsp;Experience持有数据，游戏中的逻辑就是对Experience数据的加载和对象逻辑初始化（颇有DOD面向数据编程的味道）。加载Experience发生在GameMode对象InitGame函数中，整个加载的过程配合GameState的ExperienceManagerComponent来实现。而对象逻辑初始化则基本上发生在Experience加载完成后的事件回调中OnExperienceLoad中。回调函数创建了Pawn,配置了Pawn的InputConfig。基本上是对应数据内容。
 
-
-
 &emsp;&emsp;注意在Experience加载完成之前也会创建Pawn，但是由于没有会发现没有Pawn类型（神奇的Lyra在WorldSetting中没有设定默认的Pawn类型），也没办法生成Pawn。也就是说具体的Pawn相关逻辑都延后到Experience加载完成后。
 
 
+## 技能类间关系
+```mermaid
+graph TD
+
+subgraph runtime_class
+Controller--hold-->PlayerState
+PlayerState--hold-->AbilitySystemComponent
+Character--hold-->HeroComponent
+Character--hold-->PawnExtensionComponent
+PawnExtensionComponent--初始化-->AbilitySystemComponent
+HeroComponent--Tag传送-->AbilitySystemComponent
+Controller--hold-->Character
+end
+
+subgraph Data
+Experience--hold-->PawnData
+PawnData--hold-->AbilitySet
+PawnData--hold-->InputConfig
+end
+
+AbilitySet--to_init-->AbilitySystemComponent
+PawnData--to_init-->PlayerState
+
+
+style AbilitySet fill:#f00, stroke:#888,stroke-width:4px
+style PawnData fill:#f00, stroke:#888,stroke-width:4px
+style Experience fill:#f00, stroke:#888,stroke-width:4px
+style InputConfig fill:#f00, stroke:#888,stroke-width:4px
+```
 
 
 
