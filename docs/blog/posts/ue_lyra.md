@@ -5,7 +5,7 @@ categories:
     - Unreal Engine
 tags: note
 ---
-# 从数据角度看UE-Lyra (一)
+# Learn UE (一)｜从Experinece数据看Lyra
 
 &emsp;&emsp;曾经，我在看项目的一些疑难代码，并感到无从下手时，找到对应的数据配置表总能给我一个缝隙去看到代码的运行原理。秉持这个trick, 我尝试去深入UE-lyra的源代码，感受下这个“著名”的UE新手村Boss。在本小节中，在此记录关于Experience的基础功能。
 <!-- more -->
