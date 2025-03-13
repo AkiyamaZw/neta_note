@@ -88,6 +88,8 @@ nav:
     - blog/index.md
   - 阅读:
     - 'reading/booklist.md'
+  - 留言版:
+    - 'chat/chatting.md'
   - 关于: 'about.md'
 
 
