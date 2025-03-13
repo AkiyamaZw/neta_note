@@ -1,0 +1,83 @@
+/* 配置参考 https://github.com/RonaldLN/MyPamphlet-Blog/blob/3a19ec4ee9e4092f57cb90c46de0befb51a86e28/docs/
+stylesheets/custom.css#L25
+*/
+
+:root {
+    --md-text-font: "JetBrains Mono", "LXGW WenKai Screen";
+    --md-code-font: "LXGW WenKai Screen", "Noto Serif SC";
+  }
+
+
+@media screen and (min-width: 960px) {
+html {
+    font-size: 122%;
+}
+}
+
+@media screen and (min-width: 100em) {
+html {
+    font-size: 122.5%;
+}
+}
+
+.md-typeset h1, .md-typeset h2 {
+font-weight: 100;
+}
+
+.md-typeset h3 {
+font-weight: 100;
+}
+
+.md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4 {
+letter-spacing: 0;
+}
+
+.md-typeset {
+font-size: .7rem;
+}
+
+.md-typeset h3 {
+font-weight: 600;
+}
+
+
+
+/* 修改所有代码字体大小 */
+.md-typeset code {
+font-size: .65rem;
+}
+
+/* (覆盖)修改行内代码字体大小 */
+.md-typeset code:not(pre code) {
+font-size: inherit;
+}
+
+/* 修改代码块行间距 */
+.md-typeset pre {
+line-height: 1.8;
+}
+
+/* 修改代码块行号(数字)的字体大小 */
+.highlighttable .linenos {
+/* font-size: 0.93em; */
+font-size: .65rem;
+}
+
+/* 修改分割线的宽度 */
+.md-typeset hr {
+border-bottom: .10rem solid var(--md-default-fg-color--lightest);
+}
+
+/* 修改 Note admonition */
+.md-typeset details.note {
+border-color: hsl(269deg 77% 78%);
+}
+.md-typeset .note > summary {
+background-color: hsl(269deg 77% 78% / 10%);
+}
+.md-typeset .note > summary::before {
+background-color: hsl(269deg 77% 78%);
+}
+.md-typeset .note>.admonition-title:after, .md-typeset .note>summary:after {
+color:hsl(269deg 77% 78%);
+}
