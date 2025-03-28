@@ -24,7 +24,7 @@ auto job_b = js.create_job(root, ...);
 js.runAndWait(root)
 auto job_c = js.create_job(nullptr, ...);
 ```
-&emsp;&emsp;关于依赖关系，filament在create_job阶段定义了任务的parent,即一批任务的handle, 配合使用run,wait等函数来形成任务的依赖的作用, 如上图所示。注意runAndWait会阻塞线程，目的是形成等待job_a,job_b已经完成的语义。这样做的一个好处是定义非常清晰。但是，存在两个问题(鄙人短见): 其一，定义依赖关系阶段会阻塞当前线程，其二，并行任务的成组需要程序员有先验知识。第一个很好理解，第二个，比方说现在新增一个job_d, 它和job_c拥有相同的依赖关系外，还依赖一个job_e, 关系如下图所示。代码该怎么写？
+&emsp;&emsp;关于依赖关系，filament在create_job阶段定义了任务的parent,即一批任务的handle, 配合使用run,wait等函数来形成任务的依赖的作用, 如上图所示。注意runAndWait会阻塞线程，目的是形成等待job_a,job_b已经完成的语义。这样做的一个好处是定义非常清晰。但是，存在两个问题(鄙人短见): 其一，定义依赖关系阶段会阻塞当前线程，其二，难以描述任务有多个依赖关系的情况。第一个很好理解，第二个，比方说现在新增一个job_d, 它和job_c拥有相同的依赖关系外，还依赖job_e, 关系如下图所示。代码该怎么写？
 ```mermaid
 graph LR
 job_a-->job_c
@@ -46,7 +46,7 @@ auto job_d = js.create_job(root2, ...);
 js.runAndWait(root_2)
 
 ```
-&emsp;&emsp;代码变成了这样，一个隐含的点在于，程序员需要先验知识把job_c和job_d归到root_2这个group中。关于job在定义时，只有一个parent的限定，当前任务依赖无法表达为对多个任务的依赖，除非定义一个新的root_x作为handle依赖，可这样又陷入非一个group下无法并行执行的问题。那么，是否有可能在程序员不知道job_c和job_d是可以并行的情况下，程序自动去做job并行执行呢？有的，程序员有的。
+&emsp;&emsp;代码变成了这样，并且还不完全正确，不完美的点在job_c也需要在job_e完成后才能执行。那么总结下规则，首先，并行执行的只有在相同group且parent也相同的情况，其次，任务允许最多有1个依赖任务。这两条约束下，程序员需要推导依赖关系把job_c和job_d归到root_2这个group中。 在一种场景中，程序员可能并不care他能并行的任务有哪些，然而更加自然地考虑他的任务要在哪些任务之后才能执行。这种场景下，依赖关系的描述限制会影响到系统可用性。那么，是否有可能在程序员只知道前置任务的情况下，将他的任务加入的系统中，进而程序自动去做job依赖处理？有的哥们有的。
 
 ### 修改方案样例
 &emsp;&emsp;思路来源于赛博朋克2077在GDC上的演讲[^1][^2]。我希望能够重新设计接口，能够让使用者更加自由的去创建依赖关系。
@@ -83,6 +83,8 @@ js.runAndWait(root_2)
 ### 具体实现
 &emsp;&emsp;JobBuilder负责构建一个虚拟的queue, 其中存放的是build创建的任务。Counter作为一个同步条件工具，来实现依赖等待。这是用户接口层面的代码，实际内部构建起了一个基于jobsystem和counter的交互。
 [todo]
+
+### 总结
 
 ## Reference
 [^1]: [gdc2023 Building NightCity:The Techology of Cyberpunk 2077](https://ubm-twvideo01.s3.amazonaws.com/o1/vault/gdc2023/Slides/Buildingnightcity_Tremblay_Charles.pdf)
