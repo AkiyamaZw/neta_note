@@ -32,6 +32,7 @@ comments: true
 * [游戏编程模式](https://book.douban.com/subject/26880704/)
 * [HeadFirst设计模式](https://book.douban.com/subject/2243615/)
 * [函数式设计](https://book.douban.com/subject/36974785) [🏗️阅读中]
+* [Data-Oriented Programming](https://book.douban.com/subject/35810366/)
 
 ## 学会应用
 * [Unity3D网络游戏实战](https://book.douban.com/subject/26914638/)
