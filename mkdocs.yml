@@ -83,7 +83,7 @@ markdown_extensions:
 
 
 nav:
-  - Home: 'index.md'
+  # - Home: 'index.md'
   - 博客:
     - blog/index.md
   - 阅读:
