@@ -2,6 +2,8 @@ site_name: aki的博客
 plugins:
   - search
   - blog
+hooks:
+  - hooks/blog_nav_order.py
 extra_css:
   - stylesheets/extra.css
   - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/style.css
@@ -88,8 +90,8 @@ nav:
     - blog/index.md
   - 阅读:
     - 'reading/booklist.md'
-  - 留言版:
-    - 'chat/chatting.md'
+  # - 留言版:
+  #   - 'chat/chatting.md'
   - 关于: 'about.md'
 
 
