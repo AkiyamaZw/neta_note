@@ -1,0 +1,136 @@
+/* 配置参考 https://github.com/RonaldLN/MyPamphlet-Blog/blob/3a19ec4ee9e4092f57cb90c46de0befb51a86e28/docs/
+stylesheets/custom.css#L25
+*/
+
+:root {
+    --md-text-font: "JetBrains Mono", "LXGW WenKai Screen";
+    --md-code-font: "LXGW WenKai Screen", "Noto Serif SC";
+  }
+
+
+@media screen and (min-width: 960px) {
+html {
+    font-size: 122%;
+}
+}
+
+@media screen and (min-width: 100em) {
+html {
+    font-size: 122.5%;
+}
+}
+
+.md-typeset h1, .md-typeset h2 {
+font-weight: 100;
+}
+
+.md-typeset h3 {
+font-weight: 100;
+}
+
+.md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4 {
+letter-spacing: 0;
+}
+
+.md-typeset {
+font-size: .7rem;
+}
+
+.md-typeset h3 {
+font-weight: 600;
+}
+
+
+
+/* 修改所有代码字体大小 */
+.md-typeset code {
+font-size: .65rem;
+}
+
+/* (覆盖)修改行内代码字体大小 */
+.md-typeset code:not(pre code) {
+font-size: inherit;
+}
+
+/* 修改代码块行间距 */
+.md-typeset pre {
+line-height: 1.8;
+}
+
+/* 修改代码块行号(数字)的字体大小 */
+.highlighttable .linenos {
+/* font-size: 0.93em; */
+font-size: .65rem;
+}
+
+/* 修改分割线的宽度 */
+.md-typeset hr {
+border-bottom: .10rem solid var(--md-default-fg-color--lightest);
+}
+
+/* 修改 Note admonition */
+.md-typeset details.note {
+border-color: hsl(269deg 77% 78%);
+}
+.md-typeset .note > summary {
+background-color: hsl(269deg 77% 78% / 10%);
+}
+.md-typeset .note > summary::before {
+background-color: hsl(269deg 77% 78%);
+}
+.md-typeset .note>.admonition-title:after, .md-typeset .note>summary:after {
+color:hsl(269deg 77% 78%);
+}
+
+
+
+/* 把常驻的侧边导航放到页面右侧（目录随之换到左侧）。
+   只有宽屏下导航才作为侧栏显示，所以这段只在 min-width:76.25em 生效；
+   博客文章页等不显示导航的页面不受影响，右侧目录仍留在原位。 */
+@media screen and (min-width: 76.25em) {
+  .md-main__inner:has(> .md-sidebar--primary:not([hidden])) > .md-sidebar--primary {
+    order: 3;
+  }
+  .md-main__inner:has(> .md-sidebar--primary:not([hidden])) > .md-content {
+    order: 2;
+  }
+  .md-main__inner:has(> .md-sidebar--primary:not([hidden])) > .md-sidebar--secondary {
+    order: 1;
+  }
+
+  /* 内容区的左右留白改由两侧的栏来承担，
+     否则主题里“导航在左”的留白规则会让右侧的导航贴着正文 */
+  [dir=ltr] .md-main__inner:has(> .md-sidebar--primary:not([hidden])) > .md-sidebar--primary:not([hidden]) ~ .md-content > .md-content__inner,
+  [dir=ltr] .md-main__inner:has(> .md-sidebar--primary:not([hidden])) > .md-sidebar--secondary:not([hidden]) ~ .md-content > .md-content__inner {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  [dir=ltr] .md-main__inner:has(> .md-sidebar--primary:not([hidden])) > .md-sidebar--primary:not([hidden]) {
+    margin-left: 1.2rem;
+  }
+  [dir=ltr] .md-main__inner:has(> .md-sidebar--primary:not([hidden])) > .md-sidebar--secondary:not([hidden]) {
+    margin-right: 1.2rem;
+  }
+}
+
+
+
+/* 导航项之间的间隔调小一点。
+   宽屏下侧栏导航靠 margin-top 分隔，窄屏（抽屉式导航）下靠上下 padding 分隔。 */
+@media screen and (min-width: 76.25em) {
+  .md-nav--primary .md-nav__link {
+    margin-top: .3em;
+  }
+}
+
+/* 各分组（归档、分类、阅读……）之间的间隔也收一点 */
+.md-nav--primary .md-nav__item--section {
+  margin: 1em 0;
+}
+
+@media screen and (max-width: 76.234375em) {
+  .md-nav--primary .md-nav__link {
+    padding-top: .4rem;
+    padding-bottom: .4rem;
+  }
+}
